@@ -1,13 +1,11 @@
 class Timer {
   constructor(timeInt, startBtn, pauseBtn, resetBtn) {
-    this.timeInt = timeInt
+    this.timeInput = timeInt
     this.startBtn = startBtn
     this.pauseBtn = pauseBtn
     this.pauseBtn.disabled = true
     this.resetBtn = resetBtn
-    this.setTime = 30
-    //this.intId = 0
-    this.timeInt.addEventListener('input', this.inputValue)
+    this.resetBtn.disabled = true
     this.startBtn.addEventListener('click', this.start)
     this.pauseBtn.addEventListener('click', this.pause)
     this.resetBtn.addEventListener('click', this.reset)
@@ -15,6 +13,7 @@ class Timer {
   start = () => {
     this.startBtn.disabled = true
     this.pauseBtn.disabled = false
+    this.resetBtn.disabled = false
     this.countdown()
   }
   pause = () => {
@@ -26,26 +25,23 @@ class Timer {
   reset = () => {
     this.startBtn.disabled = false
     this.pauseBtn.disabled = true
+    this.resetBtn.disabled = true
     clearInterval(this.intId)
-    this.setTime = 30
-    document.querySelector('.form-control').value = this.setTime
-    console.log('reset timer', this.setTime)
+    this.timeInput.value = 30
+    console.log('reset timer')
   }
   countdown() {
     this.intId = setInterval(() => {
-      if (this.setTime > 0) {
-        this.setTime--
+      if (this.timeInput.value > 0) {
+        this.timeInput.value--
       }
-      document.querySelector('.form-control').value = this.setTime
-      console.log('in int', this.setTime)
-      this.setTime === 0 && clearInterval(this.intId)
+      console.log('in int', this.timeInput.value)
+      this.timeInput.value === 0 && clearInterval(this.intId)
     }, 1000)
   }
-  inputValue = (e) => {
-    e.preventDefault()
-    this.setTime = parseInt(e.target.value)
-  }
 }
+
+//======== timer inst. ======================
 const ti = document.querySelector('.form-control')
 const sb = document.querySelector('#start')
 const pb = document.querySelector('#pause')
