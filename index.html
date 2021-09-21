@@ -17,10 +17,34 @@
   <body>
     <div class="container">
       <div class="timer centered">
-        <input class="form-control" type="number" value="30" />
-        <button id="start" class="btn">Start</button>
-        <button id="pause" class="btn">Pause</button>
-        <button id="reset" class="btn">Reset</button>
+        <svg width="300" height="300">
+          <circle
+            r="140"
+            cx="150"
+            cy="150"
+            fill="transparent"
+            stroke="orange"
+            stroke-width="10"
+            stroke-dasharray="879"
+            transform="rotate(-90
+            150
+            150)"
+          />
+        </svg>
+        <div class="interface centered">
+          <input class="form-control" type="text" value="5.00" />
+          <div>
+            <button id="start" class="btn">
+              <img class="play-control" src="./play.png" alt="play button" />
+            </button>
+            <button id="pause" class="btn">
+              <img class="controls" src="./pause.png" alt="pause button" />
+            </button>
+            <button id="reset" class="btn">
+              <img class="controls" src="./reset.png" alt="reset button" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="index.js"></script>
